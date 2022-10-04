@@ -26,6 +26,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.DeserializeJsonToObject(logger, builder.Configuration);
+app.StartDeserialize(logger, builder.Configuration);
 
 app.Run();

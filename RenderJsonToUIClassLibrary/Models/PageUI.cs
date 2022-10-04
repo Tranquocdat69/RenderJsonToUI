@@ -1,8 +1,7 @@
-﻿namespace RenderJsonToUI.Models
+﻿namespace RenderJsonToUIClassLibrary.Models
 {
-    public class Page
+    public class PageUI
     {
-        public static List<Page> ListPages = new List<Page>();
         public string PageId { get; set; }
         public int? PageOrder { get; set; }
         public string ApplicationID { get; set; }
@@ -20,7 +19,7 @@
         public string Url { get; set; }
         public string LayoutID { get; set; }
         public string LayoutName { get; set; }
-        public Layout Layout { get; set; }
+        public LayoutUI Layout { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public int? RefreshInterval { get; set; }
@@ -38,6 +37,6 @@
         public string TemplatePageId { get; set; }
         public bool TemplatePageModuleInherit { get; set; }
         public bool DeleteSuccess { get; set; }
-        public List<PageModule> ListPageModule { get; set; }
+        public List<PageModuleUI> ListPageModule { get; set; }
     }
 }

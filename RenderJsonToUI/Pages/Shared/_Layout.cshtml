@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using RenderJsonToUIClassLibrary.Models
+@using RenderJsonToUIClassLibrary.Utils
+@{
+    var pageContent = PageUIUtil.ListPages[0];
+    string layoutContent = pageContent.Layout.LayoutContent;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,7 +15,9 @@
     <link rel="stylesheet" href="~/RenderJsonToUI.styles.css" asp-append-version="true" />
 </head>
 <body>
-
+    @await Component.InvokeAsync("Header")
+    @await Component.InvokeAsync("Main")
+    @await Component.InvokeAsync("Footer")
     @RenderBody()
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

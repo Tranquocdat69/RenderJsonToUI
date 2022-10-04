@@ -1,6 +1,6 @@
-﻿namespace RenderJsonToUI.Models
+﻿namespace RenderJsonToUIClassLibrary.Models
 {
-    public class PageModule
+    public class PageModuleUI
     {
         public string PageModuleID { get; set; }
         public string PageID { get; set; }

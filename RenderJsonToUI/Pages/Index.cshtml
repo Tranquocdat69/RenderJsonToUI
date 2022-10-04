@@ -1,15 +1,6 @@
 ﻿@page
+@using RenderJsonToUIClassLibrary.Models
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
-    RenderJsonToUI.Models.Page pageFromJson = RenderJsonToUI.Models.Page.ListPages[0]; 
+    //ViewData["Title"] = @Model.Title;
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-@pageFromJson
-
-

@@ -1,6 +1,6 @@
-﻿namespace RenderJsonToUI.Models
+﻿namespace RenderJsonToUIClassLibrary.Models
 {
-    public class Layout
+    public class LayoutUI
     {
         public string LayoutID { get; set; }
         public int? LayoutOrder { get; set; }
