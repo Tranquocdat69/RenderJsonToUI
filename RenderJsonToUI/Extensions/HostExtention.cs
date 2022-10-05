@@ -4,10 +4,15 @@ namespace RenderJsonToUI.Extensions
 {
     public static class HostExtention
     {
-        public static IHost StartDeserialize(this IHost host, ILogger<StreamReader> logger, IConfiguration configuration)
+        public static IHost StartDeserialize(this IHost host, IServiceCollection services, IConfiguration configuration)
         {
+
             string filePath = configuration.GetSection("FilePath").Value;
-            JsonUtil.ReadFileThenDeserialize(filePath, logger);
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                ILogger<StreamReader> logger = serviceProvider.GetRequiredService<ILogger<StreamReader>>();
+                JsonUtil.ReadFileThenDeserialize(filePath, logger);
+            }
             return host;
         }
     }

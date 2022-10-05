@@ -1,10 +1,10 @@
-﻿@using RenderJsonToUI.Pages.Partial
-@using RenderJsonToUIClassLibrary.Models
+﻿@using RenderJsonToUIClassLibrary.Models
 @using RenderJsonToUIClassLibrary.Utils
 @{
-    var pageContent = PageUIUtil.ListPages[0];
-    string layoutContent = pageContent.Layout.LayoutContent;
+    var pageUI = PageUIUtil.ListPages[0];
+    string layoutContent = pageUI.Layout.LayoutContent;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,10 +35,10 @@
             </div>
         </main>
     </div>
-    <partial name="Partial/ContentDemo" model="@PageUIUtil.ListPages[0]" />
     <div class="row">
         <div id="bottomPanel" class="ecm-panel" runat="server"></div>
     </div>
+
     @RenderBody()
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

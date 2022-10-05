@@ -4,26 +4,32 @@
     {
         public static void ReadFileThenDeserialize(string filePath, ILogger<StreamReader> logger)
         {
-            try
+            if (File.Exists(filePath))
             {
-                using (StreamReader streamReader = new StreamReader(filePath))
+                try
                 {
-                    string json = streamReader.ReadToEnd();
+                    using (StreamReader streamReader = new StreamReader(filePath))
+                    {
+                        string json = streamReader.ReadToEnd();
 
-                    if (string.IsNullOrEmpty(json))
-                        logger.LogWarning("Empty file !");
-                    else
-                        PageUIUtil.ListPages = JsonSerializer.Deserialize<List<PageUI>>(json);
+                        if (string.IsNullOrEmpty(json))
+                            logger.LogWarning("Empty file !");
+                        else
+                            PageUIUtil.ListPages = JsonSerializer.Deserialize<List<PageUI>>(json);
+                    }
+                }
+                catch (Exception e)
+                {
+                    logger.LogError(e.ToString());
                 }
             }
-            catch (Exception e)
-            {
-                logger.LogError(e.ToString());
-            }
+            else
+                logger.LogError("File does not exist !");
         }
 
         /*var options = new JsonSerializerOptions();
         options.Converters.Add(new CustomDateTimeConverter("yyyy-MM-ddTHH:mm:ss"));*/
+
         public class CustomDateTimeConverter : JsonConverter<DateTime>
         {
             private readonly string Format;

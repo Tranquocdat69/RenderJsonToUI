@@ -1,0 +1,26 @@
+﻿@page
+@using RenderJsonToUIClassLibrary.Models
+@model HomeModel
+@{
+    var pageUI = Model.PageUI;
+    foreach (var item in pageUI.ListPageModule)
+    {
+        if (item.Position.Equals("topPanel"))
+        {
+            <script>
+                var div = document.getElementById("topPanel");
+                div.innerHTML = `@await Html.PartialAsync("Modules/Navigation/HeaderMenu", Model)`;
+            </script>
+        }
+        
+        if (item.Position.Equals("topPanel"))
+        {
+            <script>
+                var div = document.getElementById("topPanel");
+                div.innerHTML = `@await Html.PartialAsync("Modules/Navigation/HeaderMenu", Model)`;
+            </script>
+        }   
+    }
+}
+
+

@@ -3,9 +3,10 @@ using RenderJsonToUI.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-ServiceProvider serviceProvider = builder.Services.BuildServiceProvider();
-ILogger<StreamReader> logger = serviceProvider.GetRequiredService<ILogger<StreamReader>>();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AddPageRoute("/Home", "");
+});
 
 var app = builder.Build();
 
@@ -26,6 +27,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.StartDeserialize(logger, builder.Configuration);
+app.StartDeserialize(builder.Services, builder.Configuration);
 
 app.Run();
